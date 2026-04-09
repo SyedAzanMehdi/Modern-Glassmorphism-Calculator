@@ -1,0 +1,184 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0f172a; /* Slate 900 */
+    overflow: hidden;
+    position: relative;
+    color: #fff;
+}
+
+/* Abstract Background Shapes */
+.background-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.8;
+}
+
+.shape-1 {
+    width: 400px;
+    height: 400px;
+    background: #3b82f6; /* Blue */
+    top: -100px;
+    left: -100px;
+    animation: float 10s infinite ease-in-out alternate;
+}
+
+.shape-2 {
+    width: 300px;
+    height: 300px;
+    background: #8b5cf6; /* Purple */
+    bottom: -50px;
+    right: -50px;
+    animation: float 8s infinite ease-in-out alternate reverse;
+}
+
+.shape-3 {
+    width: 250px;
+    height: 250px;
+    background: #ec4899; /* Pink */
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    animation: float 12s infinite ease-in-out alternate;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(40px) scale(1.1); }
+}
+
+/* Calculator Container - Glassmorphism */
+.calculator {
+    width: 350px;
+    background: rgba(255, 255, 255, 0.05); /* Very light, transparent white */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    padding: 30px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Display */
+.display {
+    width: 100%;
+    text-align: right;
+    padding: 20px 10px;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    word-wrap: break-word;
+    word-break: break-all;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.previous-operand {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.6);
+    min-height: 1.5rem;
+}
+
+.current-operand {
+    font-size: 2.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+/* Keypad - Grid Layout */
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.btn {
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    font-size: 1.5rem;
+    padding: 15px 0;
+    border-radius: 12px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-weight: 400;
+}
+
+.btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active {
+    transform: translateY(0);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Specialized Buttons */
+.btn-action {
+    color: #ec4899; /* Pink accent */
+    font-weight: 500;
+    font-size: 1.2rem; /* slightly smaller font for text */
+}
+
+.btn-operator {
+    color: #3b82f6; /* Blue accent */
+    font-weight: 500;
+}
+
+.btn-zero {
+    grid-column: span 2;
+}
+
+.btn-equals {
+    background: rgba(59, 130, 246, 0.6);
+    border: 1px solid rgba(59, 130, 246, 0.4);
+    font-weight: 600;
+}
+
+.btn-equals:hover {
+    background: rgba(59, 130, 246, 0.8);
+}
+
+/* Responsive adjustments */
+@media (max-width: 400px) {
+    .calculator {
+        width: 100%;
+        height: 100vh;
+        border-radius: 0;
+        justify-content: flex-end;
+        padding-bottom: 40px;
+        border: none;
+    }
+}
